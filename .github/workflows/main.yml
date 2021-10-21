@@ -25,11 +25,6 @@ jobs:
         run: python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - name: clone project 
         uses: actions/checkout@v1
-        with:
-          repository: livinggoods/config-kenya-lg-isiolo
-          token: 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
-          path: config-kenya-lg-isiolo
-          ref: development
       - name: setting details
         run: |
           git config user.name kennethatria

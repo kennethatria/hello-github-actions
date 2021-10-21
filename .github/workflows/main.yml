@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name kennethatria
           git config user.email kennethatria@gmail.com
-          git clone https://oauth2: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@github.com/kennethatria/config-kenya-lg-isiolo.git
+          git clone https://gitlab-ci-token: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@github.com/kennethatria/config-kenya-lg-isiolo.git
           cd config-kenya-lg-isiolo
           pwd
           medic-conf compile-app-settings convert-app-forms -- assessment

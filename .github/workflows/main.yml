@@ -1,12 +1,25 @@
 name: A workflow for my Hello World file
-on: push
+on: 
+  push:
+    branches: [ development ]
+  pull request:
+    branches: [ development ]
 jobs:
   build:
-    name: Hello world action
+    name: Pushing builds
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: ./action-a
+      - name: Automated action
+        uses: ./action-a
         with:
           MY_NAME: "test"
+      - name: Manual action
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+        run: |
+            npm install -g medic-conf@1.2.1
+            medic-conf --version
+            
 

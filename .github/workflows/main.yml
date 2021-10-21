@@ -14,10 +14,11 @@ jobs:
         uses: ./action-a
         with:
           MY_NAME: "test"
-      - name: Manual action
+      - name: setting up node
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: install medic-conf and display version
         run: |
             npm install -g medic-conf@1.2.1
             medic-conf --version

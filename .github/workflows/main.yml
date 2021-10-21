@@ -20,7 +20,7 @@ jobs:
           node-version: '14'
       - name: medic-conf install
         run: |
-          npm install cht-conf@3.1.0
-          cht-conf --version
+          npm install cht-conf
+          cht --version
             
 

@@ -30,6 +30,7 @@ jobs:
           token: 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
           path: config-kenya-lg-isiolo
           ref: development
+      - name: setting details
         run: |
           git config user.name kennethatria
           git config user.email kennethatria@gmail.com

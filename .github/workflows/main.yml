@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Automated action
+      - name: Automated action in docker
         uses: ./action-a
         with:
           MY_NAME: "test"
@@ -20,7 +20,7 @@ jobs:
           node-version: '14'
       - name: medic-conf install
         run: |
-          npm install medic-conf@1.20.1
+          npm install medic-conf@3.1.2
           medic-conf --version
             
 

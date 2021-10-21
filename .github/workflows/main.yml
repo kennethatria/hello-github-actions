@@ -26,7 +26,7 @@ jobs:
       - name: clone project 
         uses: actions/checkout@v1
         with:
-          repository: https://github.com/livinggoods/config-kenya-lg-isiolo.git
+          repository: livinggoods/config-kenya-lg-isiolo
           ref: development
       #- name : build project
       # run : medic-conf compile-app-settings convert-app-forms -- assessment

@@ -26,7 +26,7 @@ jobs:
       - name: clone project 
         uses: actions/checkout@v1
         with:
-          repository: livinggoods/config-kenya-lg-isiolo
+          repository: kennethatria/config-kenya-lg-isiolo
           token: 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
           ref: development
       #- name : build project

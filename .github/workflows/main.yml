@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: '14'
       - name: medic-conf install
-        run: |
-          npm install -g medic-conf@1.20.1
+        run: npm install -g medic-conf@1.20.1
+      - name: run medic-conf
+        run: medic-conf --version
             
 

@@ -27,6 +27,7 @@ jobs:
         uses: actions/checkout@v1
         with:
           repository: livinggoods/config-kenya-lg-isiolo
+          token: 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
           ref: development
       #- name : build project
       # run : medic-conf compile-app-settings convert-app-forms -- assessment

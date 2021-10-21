@@ -23,6 +23,13 @@ jobs:
         run: medic-conf --version
       - name: set up pyxform
         run: python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
+      - name: clone project 
+        run : |
+              git clone https://github.com/livinggoods/config-kenya-lg-isiolo.git
+              cd config-kenya-lg-isiolo
+              pwd
+      #- name : build project
+      # run : medic-conf compile-app-settings convert-app-forms -- assessment
 
             
 

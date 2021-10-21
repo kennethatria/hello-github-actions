@@ -21,6 +21,6 @@ jobs:
       - name: medic-conf install
         run: |
           npm install cht-conf@3.1.0
-          medic-conf --version
+          cht-conf --version
             
 

@@ -1,7 +1,9 @@
 name: A workflow for my Hello World file
-on: 
+
+on:
   push:
-    branches: [ main ]
+    branches:
+      - "release/*"
   pull_request:
     branches: [ development ]
 jobs:
@@ -9,36 +11,7 @@ jobs:
     name: Pushing builds
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
-        with:
-          MY_NAME: ATRIA
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - name: Automated action with docker
-        uses: ./action-a
-        with:
-          MY_NAME: "test"
-      - name: medic-conf install
-        run: npm install -g medic-conf@1.20.1
-      - name: run medic-conf
-        run: medic-conf --version
-      - name: set up pyxform
-        run: python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
-      - name: clone project 
-        uses: actions/checkout@v1
-      - name: setting details
-        run: |
-          git config user.name kennethatria
-          git config user.email kennethatria@gmail.com
-          git clone https://gitlab-ci-token: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@github.com/kennethatria/config-kenya-lg-isiolo.git
-          cd config-kenya-lg-isiolo
-          pwd
-          medic-conf compile-app-settings convert-app-forms -- assessment
-
-      #- name : build project
-      # run : medic-conf compile-app-settings convert-app-forms -- assessment
+      - uses: ./action-b
 
             
 

@@ -31,7 +31,7 @@ jobs:
 
   push-merged-branch:
    runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: |
-            echo Push branch to staging
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo Push branch to staging

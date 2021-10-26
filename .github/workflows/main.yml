@@ -11,8 +11,8 @@ jobs:
     name: Pushing builds
     runs-on: ubuntu-latest
     steps:
-      #- uses: ./action-a
-      - uses: actions/checkout@v2
+      - uses: ./action-a
+      - uses: actions/checkout@v1
   - uses: everlytic/branch-merge@1.1.2
       with:
         github_token: ${{ github.token }}

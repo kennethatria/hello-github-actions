@@ -1,9 +1,11 @@
-name: Automatic Merge
+name: Automatic Merge release - development
 
 on:
   push:
     branches:
       - "release/*"
+  pull_request:
+    types: [ closed ]
 jobs:
   merge-branch:
     runs-on: ubuntu-latest
@@ -15,3 +17,18 @@ jobs:
           source_ref: ${{ github.ref }}
           target_branch: 'development'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+          
+  merge_job:
+    # this job will only run if the PR has been merged
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo PR #${{ github.event.number }} has been merged
+  close_job:
+    # this job will only run if the PR has been closed without being merged
+    if: github.event.pull_request.merged == false
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo PR #${{ github.event.number }} has been closed without being merged

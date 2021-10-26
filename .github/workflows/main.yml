@@ -6,8 +6,10 @@ on:
       - "release/*"
   pull_request:
     types: [ closed ]
+
 jobs:
-  merge-branch:
+  merge-job-development: # this job will only run if the PR has been merged
+    if: github.event.pull_request.merged == true # add check the target branch merged into is development
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,18 +19,13 @@ jobs:
           source_ref: ${{ github.ref }}
           target_branch: 'development'
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+      - run: |
+          echo PR #${{ github.event.number }} has been merged
+          echo ${{ github.event.pull_request.base.ref }}
+
           
-  merge_job:
-    # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true
+  push-config-job:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        echo PR #${{ github.event.number }} has been merged
-  close_job:
-    # this job will only run if the PR has been closed without being merged
-    if: github.event.pull_request.merged == false
-    runs-on: ubuntu-latest
-    steps:
-    - run: |
-        echo PR #${{ github.event.number }} has been closed without being merged
+        echo push config

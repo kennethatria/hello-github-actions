@@ -4,14 +4,23 @@ on:
   push:
     branches:
       - "release/*"
-  pull_request:
-    branches: [ development ]
+  #pull_request:
+  #  branches: [ development ]
 jobs:
   build:
     name: Pushing builds
     runs-on: ubuntu-latest
     steps:
-      - uses: ./action-b
+        - uses: actions/checkout@v1
+        with:
+          github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'development'
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+        - uses: everlytic/branch-merge@1.1.2
+        - uses: ./action-a
+        with:
+          MY_NAME: ATRIA
 
             
 

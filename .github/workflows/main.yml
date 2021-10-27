@@ -17,7 +17,7 @@ jobs:
           github_token: ${{ github.token }}
           source_ref: ${{ github.ref }}
           target_branch: 'development'
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+          commit_message_template: '[Automated] Merged {source_ref} into {target_branch}'
       - run: |
           echo PR #${{ github.event.number }} has been merged
           echo target of PR ${{ github.event.pull_request.base.ref }}
@@ -27,6 +27,7 @@ jobs:
           
   push-config-job:
     runs-on: ubuntu-latest
+    needs: merge-job-development
     steps:
     - run: |
         echo push config

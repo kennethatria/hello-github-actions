@@ -1,9 +1,9 @@
 name: Automatic Merge release - development
 
 on:
-  push:
-    branches:
-      - "release/*"
+#  push:
+#    branches:
+#      - "release/*"
   pull_request:
     branches:
       - "release/x"
@@ -11,7 +11,7 @@ on:
 
 jobs:
   merge-job-development: # this job will only run if the PR has been merged
-    if: github.event.pull_request.merged == true && ${{ github.event.pull_request.base.ref }} == "releases/GSE-start" # add check the target branch merged into is development
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == "releases/GSE-start" # add check the target branch merged into is development
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,8 +23,8 @@ jobs:
           commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
       - run: |
           echo PR #${{ github.event.number }} has been merged
-          echo ${{ github.event.pull_request.base.ref }}
-          echo ${{ github.event.pull_request.head.ref }}
+          echo target of PR ${{ github.event.pull_request.base.ref }}
+          echo source of PR ${{ github.event.pull_request.head.ref }}
           echo this works
 
           

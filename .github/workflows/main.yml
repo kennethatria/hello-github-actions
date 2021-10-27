@@ -1,12 +1,9 @@
 name: Automatic Merge release - development
 
 on:
-#  push:
-#    branches:
-#      - "release/*"
   pull_request:
     branches:
-      - "release/x"
+      - 'release/**'
     types: [ closed ]
 
 jobs:

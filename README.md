@@ -6,3 +6,5 @@ feature by kenneth
 **Ready to get started? Navigate to the first issue.**
 
 But why... 
+
+why me 

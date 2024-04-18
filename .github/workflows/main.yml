@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - "release/*"
-      - "npo"
-      - "feature/something-0"
-  #pull_request:
-  #  types: [ closed ]
+      - npo
+      - feature/something-0
+  pull_request:
+    types: [ closed ]
 
 jobs:
   merge-job-development: # this job will only run if the PR has been merged

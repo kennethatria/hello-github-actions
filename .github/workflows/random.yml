@@ -20,7 +20,7 @@ jobs:
           echo  ${{ github.event_name }}
           echo  "condtion ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}"
 
-          echo "condition - github.event_name"
+          echo "condition - ${{ github.event_name }}"
       - run: |
           echo "yes this workes on MAIN BRANCH"
         if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}

@@ -4,6 +4,8 @@ on:
   push: 
     branches: 
       - "feature/something-0"
+  workflow_dispatch:
+
 jobs:
   too-much: # this job will only run if the PR has been merged# add check the target branch merged into is development
     runs-on: ubuntu-latest
@@ -12,11 +14,13 @@ jobs:
       - run: |
           echo ${{ github.ref }}
           echo  ${{ github.event_name }}
-          echo  ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+          echo  "condition ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}"
           echo "======= sme ====="
           echo ${{ github.ref }}
           echo  ${{ github.event_name }}
-          echo  ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}
+          echo  "condtion ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}"
+
+          echo "condition - github.event_name"
       - run: |
           echo "yes this workes on MAIN BRANCH"
         if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}

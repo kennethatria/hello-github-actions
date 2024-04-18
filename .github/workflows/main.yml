@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - "release/*"
+      - "npo"
+      - "feature/something-0"
   pull_request:
     types: [ closed ]
 
@@ -29,3 +31,26 @@ jobs:
     steps:
     - run: |
         echo push config
+
+  too-much: # this job will only run if the PR has been merged# add check the target branch merged into is development
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo ${{ github.ref }}
+          echo  ${{ github.event_name }}
+          echo  "condition ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}"
+          echo "======= sme ====="
+          echo ${{ github.ref }}
+          echo  ${{ github.event_name }}
+          echo  "condtion ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}"
+
+          echo "========sme====="
+          echo "condition - ${{ github.event_name }}"
+          echo "branch - ${{ github.ref  }}"
+      - run: |
+          echo "yes this workes on MAIN BRANCH"
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+      - run: |
+          echo "yes this workes on SOMETHING BRANCH"
+        if: ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}

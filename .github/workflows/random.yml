@@ -19,7 +19,7 @@ jobs:
           echo  ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}
       - run: |
           echo "yes this workes on MAIN BRANCH"
-        if: ${{ github.ref == 'refs/heads/feature/main' && github.event_name == 'push' }}
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
       - run: |
           echo "yes this workes on SOMETHING BRANCH"
         if: ${{ github.ref == 'refs/heads/feature/something-0' && github.event_name == 'push' }}

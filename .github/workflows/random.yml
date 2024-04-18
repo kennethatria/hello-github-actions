@@ -1,8 +1,7 @@
 name: Automatic Merge release - feature-something
 
 on:
-  push: 
-    branches: ["main"]
+  workflow_dispatch
 
 jobs:
   too-much: # this job will only run if the PR has been merged# add check the target branch merged into is development

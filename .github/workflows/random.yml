@@ -12,3 +12,5 @@ jobs:
           echo ${{ github.ref }}
           echo  ${{ github.event_name }}
           echo  ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+
+          echo ${{ github.ref == 'refs/head/feature/something-0' && github.event_name == 'workflow_dispatch'}}
